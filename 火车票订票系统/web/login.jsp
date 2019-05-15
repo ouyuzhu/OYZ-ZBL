@@ -1,16 +1,31 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2019/4/4 0004
-  Time: 17:51
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@page import="oyz_zbl.github.userDao"%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";//当前的路径
+    request.setCharacterEncoding("utf-8");
+%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <title>login.jsp</title>
+    <base href="<%=basePath%>">
+
+    <title>My JSP 'login.jsp' starting page</title>
+
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
 </head>
 <body>
+用户名:<%=request.getParameter("username")%><br/>
+密码:<%=request.getParameter("password")%><br/>
+
+登陆结果<%=userDao.check(request.getParameter("username"), request
+        .getParameter("password"))%>
 
 </body>
 </html>

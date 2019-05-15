@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>register.html</title>
@@ -8,11 +8,14 @@
     }</style>
 </head>
 <body>
-<form action="register.jsp">
-    <p>用户名 <input type="text"></p>
-    <p>密码 <input type="password"></p>
-    <p>确认密码 <input type="password"></p>
-    <p><input type="submit" name="submit" value="提交">
+<form action="register.jsp" method="post">
+    <p>用户名 <input type="text" name="username"></p>
+    <p>姓名<input type="text" name="truename"></p>
+    <p>身份证号<input type="text" name="id_card"></p>
+    <p>手机<input type="text" name="phone"></p>
+    <p>密码 <input type="password" name="password"></p>
+    <p>确认密码 <input type="password" name="password2"></p>
+    <p><input type="submit" name="submit" value="Register">
         <input type="reset" name="reset" value="清空"></p>
 </form>
 </body>

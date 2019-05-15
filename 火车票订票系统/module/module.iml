@@ -31,5 +31,15 @@
         <jarDirectory url="file://$MODULE_DIR$/../web/lib" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="module-library" exported="" scope="RUNTIME">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/corr-jar/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

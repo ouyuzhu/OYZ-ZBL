@@ -19,5 +19,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="module" module-name="module" />
+    <orderEntry type="library" name="mysql-connector-java-5.1.47-bin" level="project" />
   </component>
 </module>

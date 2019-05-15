@@ -1,25 +1,18 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2019/4/4 0004
-  Time: 16:52
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
   <head>
     <title>火车票订票系统</title>
       <style type="text/css">
           body{
               text-align: center;
-
           }
           .header{
-              height: 400px;
+              height: 300px;
           }
           .content{
               font-size:30px;
-              height: 500px;
+              height: 400px;
           }
           .footer{
               height: 100px;

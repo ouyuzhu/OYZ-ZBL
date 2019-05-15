@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>login.html</title>
@@ -8,10 +8,10 @@
     }</style>
 </head>
 <body>
-<form action="login.jsp">
-    <p>用户名<input type="text"></p>
-    <p>密码 <input type="password"></p>
-    <p><input type="submit" name="submit" value="登录">
+<form action="login.jsp" method="post">
+    <p>用户名<input type="text" name="username"></p>
+    <p>密码 <input type="password" name="password"></p>
+    <p><input type="submit" name="submit" value="Login">
         <input type="reset" name="reset" value="清空"></p>
 </form>
 </body>
