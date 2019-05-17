@@ -88,4 +88,25 @@ public class userDao {
         public static boolean nobuy(){
             return true;
         }
+        public static void selectall(){
+            Connection conn=null;
+            PreparedStatement  ps=null;
+            ResultSet res=null;
+            try{
+                conn=JDBCUtil.getConn();
+                String sql="SELECT * FROM ticks_info";
+                ps=conn.prepareStatement(sql);
+                res=ps.executeQuery();
+                while(res.next()){
+                    System.out.println(
+                            res.getString(1)+res.getString(2)+res.getString(3)+res.getString(4)+res.getString(5)+res.getString(6)+res.getString(7));
+                }
+            }
+            catch (Exception e){
+e.printStackTrace();
+            }
+            finally {
+JDBCUtil.close(conn,ps,res);
+            }
+        }
 }
