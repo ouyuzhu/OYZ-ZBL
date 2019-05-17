@@ -82,4 +82,10 @@ public class userDao {
 //                    return false;
 //                }
         }
+        public static boolean buy(){
+            return true;
+        }
+        public static boolean nobuy(){
+            return true;
+        }
 }

@@ -68,9 +68,9 @@
         .content .form input:nth-of-type(3){
             background-color: orange;
         }
-        .content .form p{
+        .content .form p:nth-of-type(2){
             margin-top: 10px;
-            font-size: 18px;
+            font-size: 15px;
             margin-bottom: 15px;
         }
         .footer{
@@ -111,7 +111,7 @@
             <input type="password" name="password"placeholder="请输入密码"><br>
             <input type="submit" value="立即登录"><br>
             <p>
-                <span><a href="register.html">点击这里注册铁路账号</a></span>|<span><a href="#">忘记密码？</a></span>
+                <span><a href="register.html">点击这里注册铁路账号</a></span>|<span><a href="#">忘记密码？</a></span><span>|</span><a href="admin.html">我是管理員</a>
             </p>
         </form>
     </div>

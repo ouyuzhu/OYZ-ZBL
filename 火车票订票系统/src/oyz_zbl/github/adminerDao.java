@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class adminerDao {
+    /*管理员登录检查*/
     public static boolean check(String username, String password) {
         boolean flag=false;
         Connection conn=null;
@@ -29,22 +30,64 @@ public class adminerDao {
         }
         return flag;
     }
-    public void add(){
+    /*
+    * 接下来是管理员对票的信息进行插入*/
+    public boolean add(String tickets_id,String start,String stop,int votes,String s_time,String a_time,double price){
         Connection conn=null;
         PreparedStatement ps=null;
         ResultSet res=null;
-        JDBCUtil.getConn();
+        try{
+            JDBCUtil.getConn();
+            String sql="INSERT into ticks_info VALUES(?,?,?,?,?,?,?)";
+            ps=conn.prepareStatement(sql);
+            ps.setString(1,tickets_id);
+            ps.setString(2,start);
+            ps.setString(3,stop);
+            ps.setInt(4,votes);
+            ps.setString(5,s_time);
+            ps.setString(6,a_time);
+            ps.setDouble(7,price);
+            ps.executeUpdate();
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+        finally {
+            JDBCUtil.close(conn,ps,null);
+        }
     }
+    /*管理员实时更新数据*/
     public void update(){
         Connection conn=null;
         PreparedStatement ps=null;
         ResultSet res=null;
-        JDBCUtil.getConn();
+        try{
+            JDBCUtil.getConn();
+        }catch (Exception e){
+
+        }
+        finally {
+
+        }
     }
-    public void delete(){
+    /*管理员删除车次信息*/
+    public boolean delete(String tickets_id){
         Connection conn=null;
         PreparedStatement ps=null;
         ResultSet res=null;
-        JDBCUtil.getConn();
+        try{
+            JDBCUtil.getConn();
+            String sql="DELETE FROM ticks_info WHERE tickets_id =?";
+            ps=conn.prepareStatement(sql);
+            ps.setString(1,tickets_id);
+            ps.executeUpdate();
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
+        finally {
+            JDBCUtil.close(conn,ps,null);
+        }
     }
 }
