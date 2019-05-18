@@ -5,7 +5,6 @@ import util.JDBCUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 public class adminerDao {
     /*管理员登录检查*/
     public static boolean check(String username, String password) {
@@ -32,13 +31,14 @@ public class adminerDao {
     }
     /*
     * 接下来是管理员对票的信息进行插入*/
-    public boolean add(String tickets_id,String start,String stop,int votes,String s_time,String a_time,double price){
+    public static boolean add(String tickets_id,String start,String stop,int votes,String s_time,String a_time,double price){
         Connection conn=null;
-        PreparedStatement ps=null;
+        PreparedStatement  ps=null;
         ResultSet res=null;
         try{
-            JDBCUtil.getConn();
+            conn=JDBCUtil.getConn();
             String sql="INSERT into ticks_info VALUES(?,?,?,?,?,?,?)";
+            ps=conn.prepareStatement(sql);
             ps=conn.prepareStatement(sql);
             ps.setString(1,tickets_id);
             ps.setString(2,start);
@@ -50,6 +50,7 @@ public class adminerDao {
             ps.executeUpdate();
             return true;
         }catch (Exception e){
+            e.printStackTrace();
             return false;
         }
         finally {
@@ -57,7 +58,7 @@ public class adminerDao {
         }
     }
     /*管理员实时更新数据*/
-    public void update(){
+    public static void update(){
         Connection conn=null;
         PreparedStatement ps=null;
         ResultSet res=null;
@@ -71,7 +72,7 @@ public class adminerDao {
         }
     }
     /*管理员删除车次信息*/
-    public boolean delete(String tickets_id){
+    public static boolean delete(String tickets_id){
         Connection conn=null;
         PreparedStatement ps=null;
         ResultSet res=null;

@@ -46,8 +46,9 @@
             }
         %>
     </table>
+</div>
 <div class="content">
-    <form action="#" method="post">
+    <form action="add.jsp" method="post">
         <table>
             <tr>
                 <td>车次</td>
@@ -59,13 +60,13 @@
                 <td>价格</td>
             </tr>
             <tr>
-                <td><input type="text" name="tickets_id"></td>
-                <td><input type="text"name="start"></td>
-                <td><input type="text"name="stop"></td>
-                <td><input type="text"name="votes"></td>
-                <td><input type="text"name="s_time"></td>
-                <td><input type="text"name="a_time"></td>
-                <td><input type="text"name="price"></td>
+                <td><input type="text"name="1"></td>
+                <td><input type="text"name="2"></td>
+                <td><input type="text"name="3"></td>
+                <td><input type="text" name="4"></td>
+                <td><input type="text"name="5"></td>
+                <td><input type="text"name="6"></td>
+                <td><input type="text"name="7"></td>
             </tr>
         </table>
         <input type="submit" value="添加">
