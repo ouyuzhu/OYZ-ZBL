@@ -1,7 +1,5 @@
 package oyz_zbl.github;
-
 import util.JDBCUtil;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,9 +26,8 @@ public class adminerDao {
             JDBCUtil.close(conn,ps,res);
         }
         return flag;
-    }
-    /*
-    * 接下来是管理员对票的信息进行插入*/
+    }//管理员登录检查
+    /* 接下来是管理员对票的信息进行插入*/
     public static boolean add(String tickets_id,String start,String stop,int votes,String s_time,String a_time,double price){
         Connection conn=null;
         PreparedStatement  ps=null;
@@ -77,7 +74,7 @@ public class adminerDao {
         PreparedStatement ps=null;
         ResultSet res=null;
         try{
-            JDBCUtil.getConn();
+            conn=JDBCUtil.getConn();
             String sql="DELETE FROM ticks_info WHERE tickets_id =?";
             ps=conn.prepareStatement(sql);
             ps.setString(1,tickets_id);

@@ -10,13 +10,13 @@ public class JDBCUtil {
     public static String user="root";
     public static String pwd="root";
     public static String driverName="com.mysql.jdbc.Driver";
-    static {//放到静态代码块里的只会执行一次
+    static {
         try {
             Class.forName(JDBCUtil.driverName);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-    }
+    }//放到静态代码块里的只会执行一次
     public static Connection getConn(){//每一次都要加载驱动
         try {
             return DriverManager.getConnection(JDBCUtil.url,JDBCUtil.user,JDBCUtil.pwd);
@@ -24,7 +24,7 @@ public class JDBCUtil {
             e.printStackTrace();
         }
         return null;
-    }
+    }//获得connection连接
     public static void close(Connection conn,Statement st,ResultSet res){
         //释放资源
         if(res!=null)
@@ -45,5 +45,5 @@ public class JDBCUtil {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-    }
+    }//关闭资源
 }

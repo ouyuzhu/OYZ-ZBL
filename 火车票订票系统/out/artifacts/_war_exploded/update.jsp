@@ -71,6 +71,13 @@
         </table>
         <input type="submit" value="添加">
     </form>
+    或者您可以通过指定火车的车次信息来删除信息。信息温馨提示：
+    由于系统内部不够完善暂不支持直接修改某一车次信息，所以需要修改时请先删除信息后再执行添加操作
+    请输入需要删除的车次信息
+    <form action="delect.jsp">
+        <input type="text" name="del">
+        <input type="submit"value="删除">
+    </form>
 </div>
 </body>
 </html>

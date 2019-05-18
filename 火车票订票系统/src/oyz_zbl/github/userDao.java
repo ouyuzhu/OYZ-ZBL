@@ -2,12 +2,11 @@ package oyz_zbl.github;
 
 import com.mysql.jdbc.JDBC4PreparedStatement;
 import util.JDBCUtil;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 public class userDao {
         public static boolean check(String username) {
@@ -30,7 +29,7 @@ public class userDao {
                 JDBCUtil.close(conn,ps,res);
             }
             return flag;
-        }
+        }//注册时用来查看是否已经有这个昵称
         public static boolean check(String username, String password) {
             boolean flag=false;
             Connection conn=null;
@@ -52,7 +51,7 @@ public class userDao {
                 JDBCUtil.close(conn,ps,res);
             }
             return flag;
-        }
+        }//登录时用来判断是否有这个人
         public static boolean register(String username, String password,String truename,String id_card,String phone) {
             Connection conn=null;
             PreparedStatement  ps=null;
@@ -85,13 +84,13 @@ public class userDao {
 //                } catch (IOException var3) {
 //                    return false;
 //                }
-        }
+        }//注册的接口
         public static boolean buy(){
             return true;
-        }
+        }//购买的方法
         public static boolean nobuy(){
             return true;
-        }
+        }//退票的方法
         public static LinkedList selectall(){
             LinkedList <tickets>list=new LinkedList<>();
             Connection conn=null;
@@ -121,5 +120,5 @@ public class userDao {
                 JDBCUtil.close(conn,ps,res);
                 return list;
             }
-        }
+        }//用户和管理员登陆成功后界面显示出来的票的信息
 }

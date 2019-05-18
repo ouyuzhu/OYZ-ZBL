@@ -18,6 +18,5 @@
              Double.parseDouble(request.getParameter("7")));
 %>
 <%=flag%>
-
 </body>
 </html>
