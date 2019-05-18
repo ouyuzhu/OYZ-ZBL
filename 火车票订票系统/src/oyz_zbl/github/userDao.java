@@ -5,6 +5,10 @@ import util.JDBCUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 public class userDao {
         public static boolean check(String username) {
             boolean flag=false;
@@ -88,7 +92,8 @@ public class userDao {
         public static boolean nobuy(){
             return true;
         }
-        public static void selectall(){
+        public static LinkedList selectall(){
+            LinkedList <tickets>list=new LinkedList<>();
             Connection conn=null;
             PreparedStatement  ps=null;
             ResultSet res=null;
@@ -98,15 +103,23 @@ public class userDao {
                 ps=conn.prepareStatement(sql);
                 res=ps.executeQuery();
                 while(res.next()){
-                    System.out.println(
-                            res.getString(1)+res.getString(2)+res.getString(3)+res.getString(4)+res.getString(5)+res.getString(6)+res.getString(7));
+                    tickets ticket=new tickets();
+                    ticket.setTickets_id(res.getString(1));
+                    ticket.setStart(res.getString(2));
+                    ticket.setStop(res.getString(3));
+                    ticket.setVotes(res.getInt(4));
+                    ticket.setS_time(res.getString(5));
+                    ticket.setA_time(res.getString(6));
+                    ticket.setPrice(res.getDouble(7));
+                    list.add(ticket);
                 }
             }
             catch (Exception e){
-e.printStackTrace();
+                e.printStackTrace();
             }
             finally {
-JDBCUtil.close(conn,ps,res);
+                JDBCUtil.close(conn,ps,res);
+                return list;
             }
         }
 }
