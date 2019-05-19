@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.LinkedList;
+import java.util.Vector;
 
 public class userDao {
         public static boolean check(String username) {
@@ -91,6 +92,42 @@ public class userDao {
         public static boolean nobuy(){
             return true;
         }//退票的方法
+        public static Vector<Vector<String>> goods(String username){
+            Vector <Vector<String>> list=new Vector<>();
+            Connection conn=null;
+            PreparedStatement ps=null;
+            ResultSet res=null;
+            try{
+                conn=JDBCUtil.getConn();
+                String sql="SELECT tickets_id,start,stop,s_time,a_time,price FROM user_info WHERE username=?";
+                ps=conn.prepareStatement(sql);
+                ps.setString(1,username);
+                res=ps.executeQuery();
+                while(res.next()){
+                    Vector <String> user=new Vector<>();
+                    user.add(res.getString("tickets_id"));
+                    user.add(res.getString("start"));
+                    user.add(res.getString("stop"));
+                    user.add(res.getString("s_time"));
+                    user.add(res.getString("a_time"));
+                    user.add(res.getString("price"));
+//                    user.setTickets_id();
+//                    user.setStart(res.getString("start"));
+//                    user.setStop(res.getString("stop"));
+//                    user.setS_time(res.getString("s_time"));
+//                    user.setA_time(res.getString("a_time"));
+//                    user.setPrice(res.getDouble("price"));
+                    list.add(user);
+                }
+                return list;
+            }catch (Exception e){
+                e.printStackTrace();
+                return null;
+            }
+            finally {
+                JDBCUtil.close(conn,ps,null);
+            }
+        }
         public static LinkedList selectall(){
             LinkedList <tickets>list=new LinkedList<>();
             Connection conn=null;

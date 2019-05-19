@@ -14,9 +14,7 @@
 <html>
 <head>
     <base href="<%=basePath%>">
-
     <title>My JSP 'login.jsp' starting page</title>
-
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
@@ -68,7 +66,7 @@
         <td>终点站</td>
     </tr>
     <tr>
-        <form action="select.jsp">
+        <form action="goods.jsp">
             <input type="text" name="start">
             <input type="text" name="stop">
             <input type="submit" value="查询">
