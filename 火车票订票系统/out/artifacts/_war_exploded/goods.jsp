@@ -1,6 +1,4 @@
-<%@ page import="oyz_zbl.github.users" %>
 <%@ page import="oyz_zbl.github.userDao" %>
-<%@ page import="java.util.LinkedList" %>
 <%@ page import="java.util.Vector" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
