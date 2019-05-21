@@ -25,6 +25,7 @@
         {
             list=new LinkedList<>();
         }
+    session.setAttribute("user",request.getParameter("username"));
     %>
 </head>
 <body>
@@ -58,6 +59,7 @@
             <%}
         %>
     </table>
+    <%=session.getAttribute("user")%>
 </div>
 <p>亲爱的用户您好，欢迎来到购票系统，以上信息是数据库中现有的火车信息，您可以通过下面的精确搜索来查询您火车信息。</p>
 <p>现在您可以购票了,请输入您的出发地和目的地</p>
@@ -68,7 +70,7 @@
         <th>终点站</th>
     </tr>
     <tr>
-        <form action="#">
+        <form action="select.jsp">
            <td><input type="text" name="start"></td>
             <td><input type="text" name="stop"></td>
             <td><input type="submit" value="查询"></td>

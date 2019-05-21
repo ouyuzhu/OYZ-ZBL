@@ -6,11 +6,12 @@
 <head>
     <title>订单管理</title>
     <%
-        Vector<Vector<String>> goods=new userDao().goods("李白");
+        String user=(String)session.getAttribute("user");
+        Vector<Vector<String>> goods=new userDao().goods(user);
     %>
 </head>
 <body>
-我的订单
+<%=(String)session.getAttribute("user")%>的订单
 <table border="1">
     <tr>
         <th>车次信息</th>

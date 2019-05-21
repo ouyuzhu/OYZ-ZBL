@@ -120,8 +120,40 @@ public class userDao {
                 JDBCUtil.close(conn,ps,res);
             }
         }//先查票
-        public static boolean buy(){
-            return true;
+        public static boolean buy(String user,Vector<String> a){
+            Connection conn=null;
+            Connection conn1=null;
+            PreparedStatement ps=null;
+            PreparedStatement ps1=null;
+            try{
+                conn=JDBCUtil.getConn();
+                String sql="INSERT INTO ut_info VALUES (?,?,?,?,?,?,?)";
+                ps=conn.prepareStatement(sql);
+                ps.setString(1,user);
+                ps.setString(2,a.get(0));
+                ps.setString(3,a.get(1));
+                ps.setString(4,a.get(2));
+                ps.setString(5,a.get(4));
+                ps.setString(6,a.get(5));
+                ps.setDouble(7,Double.parseDouble(a.get(6)));
+                int row=ps.executeUpdate();
+                System.out.println(row);
+                conn1=JDBCUtil.getConn();
+                String sql1="UPDATE ticks_info SET votes=votes-1 WHERE start=? AND stop=?";
+                ps1=conn1.prepareStatement(sql1);
+                ps1.setString(1,a.get(1));
+                ps1.setString(2,a.get(2));
+                ps1.executeUpdate();
+                return true;
+            }
+            catch (Exception e){
+                e.printStackTrace();
+                return false;
+            }
+            finally {
+                JDBCUtil.close(conn,ps,null);
+                JDBCUtil.close(conn1,ps1,null);
+            }
         }//再买票
         public static boolean nobuy(String start,String stop){
             Connection conn=null;
@@ -151,7 +183,7 @@ public class userDao {
             ResultSet res=null;
             try{
                 conn=JDBCUtil.getConn();
-                String sql="SELECT tickets_id,start,stop,s_time,a_time,price FROM user_info WHERE username=?";
+                String sql="SELECT tickets_id,start,stop,s_time,a_time,price FROM ut_info WHERE username=?";
                 ps=conn.prepareStatement(sql);
                 ps.setString(1,username);
                 res=ps.executeQuery();
