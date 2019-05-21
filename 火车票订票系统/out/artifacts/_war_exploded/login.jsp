@@ -25,7 +25,7 @@
         {
             list=new LinkedList<>();
         }
-    session.setAttribute("user",request.getParameter("username"));
+    session.setAttribute("user",request.getParameter("username"));//创建会话
     %>
 </head>
 <body>
@@ -33,6 +33,7 @@
     boolean flag=userDao.check(request.getParameter("username"),request.getParameter("password"));
     if(flag)
     {%>
+<%=session.getAttribute("user")%><%--登陆成功显示用户名--%>
 <div class="header">
     <table border="1" style="text-align: center">
         <tr>
@@ -59,7 +60,6 @@
             <%}
         %>
     </table>
-    <%=session.getAttribute("user")%>
 </div>
 <p>亲爱的用户您好，欢迎来到购票系统，以上信息是数据库中现有的火车信息，您可以通过下面的精确搜索来查询您火车信息。</p>
 <p>现在您可以购票了,请输入您的出发地和目的地</p>

@@ -1,16 +1,13 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2019/5/19 0019
-  Time: 20:26
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.Vector" %>
+<%@ page import="oyz_zbl.github.userDao" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
+    <%Vector<String> order=(Vector<String>)session.getAttribute("order");
+    String user=(String)session.getAttribute("user");%>
 </head>
 <body>
-
+<%=userDao.nobuy(user,order)%>
 </body>
 </html>

@@ -155,16 +155,26 @@ public class userDao {
                 JDBCUtil.close(conn1,ps1,null);
             }
         }//再买票
-        public static boolean nobuy(String start,String stop){
+        public static boolean nobuy(String user,Vector<String> order){
             Connection conn=null;
+            Connection conn1=null;
             PreparedStatement ps=null;
+            PreparedStatement ps1=null;
             try{
                 conn= JDBCUtil.getConn();
-                String sql="UPDATE ticks_info SET votes=votes-1 WHERE start=? AND stop=?";
+                String sql="DELETE FROM ut_info WHERE username=? AND tickets_id=? AND start=? AND stop=?";
                 ps=conn.prepareStatement(sql);
-                ps.setString(1,start);
-                ps.setString(2,stop);
-                int row=ps.executeUpdate();
+                ps.setString(1,user);
+                ps.setString(2,order.get(0));
+                ps.setString(3,order.get(1));
+                ps.setString(4,order.get(2));
+                ps.executeUpdate();
+                conn1= JDBCUtil.getConn();
+                String sql1="UPDATE ticks_info SET votes=votes+1 WHERE start=? AND stop=?";
+                ps1=conn.prepareStatement(sql1);
+                ps1.setString(1,order.get(1));
+                ps1.setString(2,order.get(2));
+                int row=ps1.executeUpdate();
                 System.out.println(row);
                 return true;
             }
@@ -174,6 +184,7 @@ public class userDao {
             }
             finally {
                 JDBCUtil.close(conn,ps,null);
+                JDBCUtil.close(conn1,ps1,null);
             }
         }//尝试退票，成功返回true
         public static Vector<Vector<String>> goods(String username){

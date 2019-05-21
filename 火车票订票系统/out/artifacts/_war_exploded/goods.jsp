@@ -11,7 +11,7 @@
     %>
 </head>
 <body>
-<%=(String)session.getAttribute("user")%>的订单
+<%=(String)session.getAttribute("user")%>的订单<%--登陆成功显示用户名--%>
 <table border="1">
     <tr>
         <th>车次信息</th>
@@ -31,6 +31,9 @@
         <td><%=i.get(3)%></td>
         <td><%=i.get(4)%></td>
         <td><%=i.get(5)%></td>
+        <%
+            session.setAttribute("order",i);
+        %>
         <td><a href="nobuy.jsp">退票</a></td>
 </tr>
     <%}

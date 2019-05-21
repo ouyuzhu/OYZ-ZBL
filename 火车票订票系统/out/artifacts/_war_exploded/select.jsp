@@ -20,6 +20,7 @@
 </head>
 <body>
 <div class="header">
+    <%=session.getAttribute("user")%><%--登陆成功显示用户名--%>
     <table border="1" style="text-align: center">
         <tr>
             <th>车次</th>
