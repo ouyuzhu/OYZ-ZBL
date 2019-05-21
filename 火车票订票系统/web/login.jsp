@@ -59,21 +59,22 @@
         %>
     </table>
 </div>
-亲爱的用户您好，欢迎来到购票系统现在您可以购票了,请输入您的出发地和目的地
+<p>亲爱的用户您好，欢迎来到购票系统，以上信息是数据库中现有的火车信息，您可以通过下面的精确搜索来查询您火车信息。</p>
+<p>现在您可以购票了,请输入您的出发地和目的地</p>
+<p>您也可以 <a href="goods.jsp">点击这里</a>来进行查看您的订单信息，进行退票处理</p>
 <table>
     <tr>
-        <td>出发站</td>
-        <td>终点站</td>
+        <th>出发站</th>
+        <th>终点站</th>
     </tr>
     <tr>
-        <form action="goods.jsp">
-            <input type="text" name="start">
-            <input type="text" name="stop">
-            <input type="submit" value="查询">
+        <form action="#">
+           <td><input type="text" name="start"></td>
+            <td><input type="text" name="stop"></td>
+            <td><input type="submit" value="查询"></td>
         </form>
     </tr>
 </table>
-
     <%}
     else
         {%>

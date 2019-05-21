@@ -86,12 +86,64 @@ public class userDao {
 //                    return false;
 //                }
         }//注册的接口
+        public static Vector<Vector<String>> select(String start,String stop){
+            Vector <Vector<String>> list=new Vector<>();
+            Connection conn=null;
+            PreparedStatement  ps=null;
+            ResultSet res=null;
+            int n=0;
+            try {
+                conn=JDBCUtil.getConn();
+                String sql="SELECT * FROM ticks_info WHERE start=? AND stop=? AND votes >0;";
+                ps=conn.prepareStatement(sql);
+                ps.setString(1,start);
+                ps.setString(2,stop);
+                res=ps.executeQuery();
+                while(res.next()){
+                    Vector <String> user=new Vector<>();
+                    user.add(res.getString("tickets_id"));
+                    user.add(res.getString("start"));
+                    user.add(res.getString("stop"));
+                    user.add(res.getString("votes"));
+                    user.add(res.getString("s_time"));
+                    user.add(res.getString("a_time"));
+                    user.add(res.getString("price"));
+                    list.add(user);
+                }
+                return list;
+            }
+            catch (Exception e){
+                e.printStackTrace();
+                return null;
+            }
+            finally {
+                JDBCUtil.close(conn,ps,res);
+            }
+        }//先查票
         public static boolean buy(){
             return true;
-        }//购买的方法
-        public static boolean nobuy(){
-            return true;
-        }//退票的方法
+        }//再买票
+        public static boolean nobuy(String start,String stop){
+            Connection conn=null;
+            PreparedStatement ps=null;
+            try{
+                conn= JDBCUtil.getConn();
+                String sql="UPDATE ticks_info SET votes=votes-1 WHERE start=? AND stop=?";
+                ps=conn.prepareStatement(sql);
+                ps.setString(1,start);
+                ps.setString(2,stop);
+                int row=ps.executeUpdate();
+                System.out.println(row);
+                return true;
+            }
+            catch (Exception e){
+                e.printStackTrace();
+                return false;
+            }
+            finally {
+                JDBCUtil.close(conn,ps,null);
+            }
+        }//尝试退票，成功返回true
         public static Vector<Vector<String>> goods(String username){
             Vector <Vector<String>> list=new Vector<>();
             Connection conn=null;
@@ -125,9 +177,9 @@ public class userDao {
                 return null;
             }
             finally {
-                JDBCUtil.close(conn,ps,null);
+                JDBCUtil.close(conn,ps,res);
             }
-        }
+        }//获取用户的票
         public static LinkedList selectall(){
             LinkedList <tickets>list=new LinkedList<>();
             Connection conn=null;
