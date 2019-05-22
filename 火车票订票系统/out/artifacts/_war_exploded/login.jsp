@@ -64,7 +64,7 @@
             float: left;
             line-height: 50px;
             font-size: 19px;
-            margin: 30px 0px 0px -35px;
+            margin: 19px 0px 0px -35px;
         }
         .header .div3{
             width: 210px;
