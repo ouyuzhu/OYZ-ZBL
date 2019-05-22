@@ -27,6 +27,7 @@ else{%>
         用户名:<%=request.getParameter("username")%><br/>
          密码:<%=request.getParameter("password")%><br/>
        注册结果<%=userDao.register(request.getParameter("username"), request.getParameter("password"),request.getParameter("truename"),request.getParameter("id_card"),request.getParameter("phone"))%>
+<%response.sendRedirect("index.jsp");%>
 <%}
 %>
 </body>

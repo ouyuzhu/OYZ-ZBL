@@ -9,5 +9,6 @@
 </head>
 <body>
 <%=userDao.nobuy(user,order)%>
+<%if(userDao.nobuy(user,order))response.sendRedirect("goods.jsp");%>
 </body>
 </html>

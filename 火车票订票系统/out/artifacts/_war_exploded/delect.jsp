@@ -9,5 +9,8 @@
     boolean flag=adminerDao.delete(request.getParameter("del"));
 %>
 <%=flag%>
+<%if(flag){%>
+<%response.sendRedirect("update.jsp");%>
+<%}%>
 </body>
 </html>

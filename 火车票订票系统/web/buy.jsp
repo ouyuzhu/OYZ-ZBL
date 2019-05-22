@@ -10,16 +10,8 @@
     %>
 </head>
 <body>
-您要购买的票的信息是<%=a%>，请核对后下单。
-<tr>
-    <td><%=a.get(0)%></td>
-    <td><%=a.get(1)%></td>
-    <td><%=a.get(2)%></td>
-    <td><%=a.get(3)%></td>
-    <td><%=a.get(4)%></td>
-    <td><%=a.get(5)%></td>
-    <td><%=a.get(6)%></td>
-</tr>
+您要购买的票的信息是<%=a%>，购买结果为
 <%=userDao.buy(user,a)%>
+<%if(userDao.buy(user,a))response.sendRedirect("goods.jsp");%>
 </body>
 </html>

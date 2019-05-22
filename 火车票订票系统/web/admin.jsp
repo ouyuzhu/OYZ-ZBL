@@ -16,6 +16,7 @@
     boolean exist = adminerDao.check(request.getParameter("username"), request.getParameter("password"));
     if (exist)
     {%>
+        <%session.setAttribute("admin",request.getParameter("username"));%>
         欢迎管理员的到来接下来您可以对火车票售票系统进行
         <a href="update.jsp">更新操作</a><br>
     <%}

@@ -50,7 +50,7 @@
             font-size:30px;
             height: 600px;
             background:url("images/poster.png") no-repeat;
-            background-size: 100% auto;
+            background-size: 100% 100%;
             position: relative;
         }
         .content .form{

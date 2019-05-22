@@ -18,5 +18,8 @@
              Double.parseDouble(request.getParameter("7")));
 %>
 <%=flag%>
+<%if(flag){%>
+    <%response.sendRedirect("update.jsp");%>
+<%}%>
 </body>
 </html>

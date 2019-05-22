@@ -77,7 +77,6 @@
             height: 600px;
             overflow: hidden;
             background-color: #48cbde70;
-            /*background:url("images/poster1.png") no-repeat 0px -666px;*/
             background-size:auto auto;
         }
         .content .min{
@@ -152,7 +151,7 @@
         <p>亲爱的用户您好，欢迎来到购票系统，以下信息是数据库中现有的火车信息。</p>
         <p>您也可以通过右边的精确搜索来查询您需要的火车信息。</p>
         <div class="table">
-        <table border="1" style="text-align: left">
+        <table border="1" align="left">
             <tr>
                 <th>车次</th>
                 <th>始发站</th>
@@ -218,7 +217,7 @@
         {%>
         用户名:<%=request.getParameter("username")%><br/>
         密码:<%=request.getParameter("password")%><br/>
-        登陆结果<%=userDao.check(request.getParameter("username"), request.getParameter("password"))%>
+        登陆结果<%=userDao.check(request.getParameter("username"),request.getParameter("password"))%>
         <%}
 %>
 </body>
