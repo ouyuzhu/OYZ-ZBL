@@ -12,6 +12,6 @@
 <body>
 您要购买的票的信息是<%=a%>，购买结果为
 <%=userDao.buy(user,a)%>
-<%if(userDao.buy(user,a))response.sendRedirect("goods.jsp");%>
+<%--<%if(userDao.buy(user,a))response.sendRedirect("goods.jsp");%>--%>
 </body>
 </html>

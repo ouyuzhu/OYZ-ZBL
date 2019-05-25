@@ -8,7 +8,7 @@
     String user=(String)session.getAttribute("user");%>
 </head>
 <body>
-<%=userDao.nobuy(user,order)%>
-<%if(userDao.nobuy(user,order))response.sendRedirect("goods.jsp");%>
+<%boolean flag=userDao.nobuy(user,order);
+if(flag)response.sendRedirect("goods.jsp");%>
 </body>
 </html>
